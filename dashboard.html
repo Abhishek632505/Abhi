@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('Laptop mockup.jpeg') no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header {
+      animation: slideDown 1.2s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      color: #ffcc70;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin-top: 0.5rem;
+    }
+
+    .home-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.8rem;
+      background-color: #ffcc70;
+      color: #000;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s ease-in-out;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .home-btn:hover {
+      background-color: #e6b860;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @keyframes slideDown {
+      0% {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .home-btn {
+        padding: 0.6rem 1.4rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <header>
+      <h1>Abhishek Anand</h1>
+      <p>Programmer | Web Developer | Designer</p>
+      <a href="index.html" class="home-btn">Home</a>
+    </header>
+  </div>
+</body>
+</html>

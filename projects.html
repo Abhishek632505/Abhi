@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: url('🌞🚀 Will Your Competitor’s Social Media Analytics Outshine Yours This Summer_ 🌟.jpeg') no-repeat center center;
+      background-size: cover;
+      z-index: -1;
+      animation: bgFloat 25s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    @keyframes bgFloat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    .content {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+      gap: 40px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .heading-box {
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      padding: 20px 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .heading-box h1 {
+      font-size: 2rem;
+      margin: 0;
+      color: #ffffff;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    }
+
+    .video-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .video-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 48%;
+    }
+
+    .card-button {
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-align: center;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      outline: none;
+    }
+
+    .card-button.metro {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+    }
+
+    .card-button.metro:hover {
+      background: linear-gradient(135deg, #0072ff, #00c6ff);
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(0, 114, 255, 0.5);
+    }
+
+    .card-button.patna {
+      background: linear-gradient(135deg, #ff512f, #dd2476);
+    }
+
+    .card-button.patna:hover {
+      background: linear-gradient(135deg, #dd2476, #ff512f);
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(255, 81, 47, 0.5);
+    }
+
+    .video-card {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      display: none;
+    }
+
+    .video-card video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    footer {
+      flex-shrink: 0;
+      background-color: #001f3f;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.95rem;
+      text-shadow: 1px 1px 2px black;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .heading-box h1 {
+        font-size: 1.6rem;
+      }
+
+      .video-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .video-block {
+        width: 100%;
+      }
+
+      .card-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+        width: 80%;
+        max-width: 300px;
+      }
+
+      footer {
+        font-size: 0.85rem;
+        padding: 15px 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .heading-box h1 {
+        font-size: 1.4rem;
+      }
+
+      .card-button {
+        font-size: 0.95rem;
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <!-- Heading -->
+    <div class="heading-box">
+      <h1>Welcome to My Project</h1>
+    </div>
+
+    <div class="video-row">
+      <!-- Metro Project Block -->
+      <div class="video-block">
+        <button class="card-button metro" onclick="showVideo()">Metro Project</button>
+        <div class="video-card" id="metroVideo">
+          <video controls poster="thumbnail.jpg">
+            <source src="Metro Project - Made with Clipchamp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <!-- Patna Project Block -->
+      <div class="video-block">
+        <button class="card-button patna" onclick="showPatnaVideo()">Patna Metro Code</button>
+        <div class="video-card" id="patnaVideo">
+          <video controls poster="patna-thumbnail.jpg">
+            <source src="Patna Metro Code - Made with Clipchamp.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Abhishek Anand | All rights reserved. | Designed with ❤️
+  </footer>
+
+  <script>
+    function showVideo() {
+      const videoCard = document.getElementById('metroVideo');
+      const video = videoCard.querySelector('video');
+      videoCard.style.display = 'block';
+      video.currentTime = 0;
+      video.play();
+
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
+    }
+
+    function showPatnaVideo() {
+      const videoCard = document.getElementById('patnaVideo');
+      const video = videoCard.querySelector('video');
+      videoCard.style.display = 'block';
+      video.currentTime = 0;
+      video.play();
+
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
+    }
+  </script>
+</body>
+</html>

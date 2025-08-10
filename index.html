@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abhishek Anand Portfolio</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      font-family: 'Roboto', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                  url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80') no-repeat center center;
+      background-size: cover;
+      animation: bgSway 25s ease-in-out infinite alternate;
+      z-index: -1;
+      transform-origin: center;
+    }
+
+    @keyframes bgSway {
+      0% { transform: scale(1); background-position: center center; }
+      100% { transform: scale(1.05); background-position: 52% 48%; }
+    }
+
+    nav {
+      position: absolute;
+      top: 0; width: 100%;
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 1rem 2rem;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 1.8rem; font-weight: 700; color: #ffcc70;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      color: #fff;
+      cursor: pointer;
+      background: rgba(0,0,0,0.4);
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+      background: rgba(255, 204, 112, 0.3);
+    }
+
+    .links {
+      display: flex; gap: 1rem;
+    }
+
+    .links a {
+      color: #fff; text-decoration: none; font-weight: bold;
+      padding: 0.5rem 1rem; border: 2px solid #ffcc70; border-radius: 25px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .links a:hover {
+      background: #ffcc70; color: #000; transform: scale(1.05);
+    }
+
+    .overlay {
+      height: 100%; width: 100%;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; padding: 2rem; color: #fff;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .overlay h1 { font-size: 3.2rem; color: #ffcc70; }
+    .overlay h2 { font-size: 2rem; margin-top: 0.2rem; }
+    .overlay p { margin-top: 1rem; font-size: 1.1rem; color: #ddd; }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      text-decoration: none; font-weight: bold;
+      border-radius: 30px; transition: all 0.3s ease;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    .btn:hover { transform: scale(1.05); }
+
+    .show-resume-btn {
+      background: linear-gradient(45deg, #4facfe, #00f2fe);
+      color: #fff; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .show-resume-btn:hover {
+      background: linear-gradient(45deg, #00f2fe, #4facfe);
+      color: #000;
+    }
+
+    .button-group {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      justify-content: center; margin-top: 1.5rem;
+    }
+
+    .social-icons {
+      position: fixed; left: 10px; bottom: 10px;
+      display: flex; flex-direction: column;
+      gap: 10px; z-index: 20;
+    }
+
+    .social-icons a img { width: 30px; height: 30px; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+
+      .links {
+        display: none;
+        position: absolute; top: 100%; left: 0; width: 100%;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 1rem; gap: 1rem;
+      }
+
+      .links.active { display: flex; }
+
+      .links a {
+        width: 100%; text-align: center;
+        background: #111; color: #ffcc70;
+      }
+
+      .links a:hover { background: #ffcc70; color: #000; }
+
+      /* Smaller buttons on mobile */
+      .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      .button-group {
+        flex-direction: column;
+        width: 100%; align-items: center; gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Abhishek Anand</div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="links" id="navLinks">
+        <a href="about.html"><i class="fas fa-user"></i> About</a>
+        <a href="skill.html"><i class="fas fa-laptop-code"></i> Skills</a>
+        <a href="projects.html"><i class="fas fa-folder-open"></i> Projects</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+      </div>
+    </nav>
+
+    <div class="overlay">
+      <h1>Hello</h1>
+      <h2>I'm Abhishek Anand</h2>
+      <p>Programmer | Web Developer | UI Designer</p>
+
+      <div class="button-group">
+        <a href="get.html" class="btn" style="background:#ffcc70; color:#000;">
+          <i class="fas fa-paper-plane"></i> Get In Touch
+        </a>
+        <a href="resume.html" target="_blank" class="btn show-resume-btn">
+          <i class="fas fa-file-alt"></i> Show Resume
+        </a>
+      </div>
+
+      <p style="margin-top: 1.5rem;">aapatna1905@email.com</p>
+    </div>
+  </header>
+
+  <div class="social-icons">
+    <a href="https://www.facebook.com/profile.php?id=61553629095904"><img src="Facebook_Logo_(2019).png" alt="Facebook"></a>
+    <a href="https://www.instagram.com/abhishekanan.anand85/?hl=en"><img src="Instagram_icon.png" alt="Instagram"></a>
+    <a href="https://www.youtube.com/@abhishekanand8936"><img src="pngtree-youtube-social-media-3d-stereo-png-image_6308427.png" alt="YouTube"></a>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const links = document.getElementById("navLinks");
+      links.classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>

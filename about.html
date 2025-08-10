@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About - Abhishek Anand</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    min-height: 100vh;
+    background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80') no-repeat fixed center center/cover;
+    position: relative;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.07);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(255, 204, 112, 0.25);
+    backdrop-filter: blur(8px);
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #ffcc70;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px #000;
+  }
+
+  /* Toggle Buttons */
+  .toggle-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+  }
+
+  .toggle-buttons button {
+    background: #ffcc70;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .toggle-buttons button:hover {
+    background: #ffd27d;
+    transform: scale(1.05);
+  }
+
+  /* Sections */
+  .section {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+  }
+
+  .section.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  .profile-img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto;
+    border: 5px solid #ffcc70;
+    box-shadow: 0 0 20px #ffcc70;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .profile-img:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 30px #ffcc70;
+  }
+
+  /* Lightbox Overlay */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255, 204, 112, 0.8);
+    animation: zoomIn 0.3s ease;
+  }
+
+  @keyframes zoomIn {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+  }
+
+  .lightbox:target {
+    display: flex;
+  }
+
+  .about-content {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #f1f1f1;
+    text-align: justify;
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    color: #ffcc70;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-left: 5px solid #ffcc70;
+    padding-left: 10px;
+    text-shadow: 0 0 6px #000;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 10px rgba(255, 204, 112, 0.2);
+  }
+
+  th, td {
+    border: 1px solid #ffcc70;
+    padding: 12px;
+    text-align: center;
+    color: #fff;
+  }
+
+  th {
+    background-color: #ffcc70;
+    color: #000;
+  }
+
+  tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Responsive Table */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.2rem;
+    }
+    .section-title {
+      font-size: 1.5rem;
+    }
+    .about-content {
+      font-size: 1rem;
+    }
+    .profile-img {
+      width: 160px;
+      height: 160px;
+    }
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+    thead {
+      display: none;
+    }
+    tr {
+      margin-bottom: 15px;
+      border: 1px solid #444;
+      padding: 10px;
+    }
+    td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+      border: none;
+      border-bottom: 1px solid #444;
+    }
+    td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 15px;
+      top: 12px;
+      font-weight: bold;
+      color: #ffcc70;
+      text-align: left;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>About Me</h1>
+
+    <!-- Buttons -->
+    <div class="toggle-buttons">
+      <button onclick="showSection('about')">About</button>
+      <button onclick="showSection('education')">Educational Qualification</button>
+    </div>
+
+    <!-- Sections will appear below buttons -->
+    <div id="about" class="section active">
+      <img src="WhatsApp Image 2025-08-01 at 08.57.42_8e3c795f.jpg" alt="Abhishek Anand" class="profile-img" onclick="openLightbox(this.src)" />
+      <div class="about-content">
+        <p>I am Abhishek Anand, a dedicated and passionate technology enthusiast from Buxar, Patna, Bihar. I hold a Bachelor of Computer Applications (BCA) degree from Patna, where I acquired a strong foundation in core computer science concepts, programming principles, and software development practices.</p>
+        <p>Currently, I am pursuing my Master of Computer Applications (MCA) in Varanasi, further enhancing my expertise in software engineering, full-stack web development, cloud computing, and modern application architectures.</p>
+        <p>I have worked with various programming languages such as Java and PHP, and have experience in frontend and backend development using HTML, CSS, JavaScript, Bootstrap, and MySQL.</p>
+        <p>My long-term goal is to contribute meaningfully to the IT industry as a skilled software developer, building efficient, scalable, and user-friendly applications.</p>
+      </div>
+    </div>
+
+    <div id="education" class="section">
+      <h2 class="section-title">Educational Qualification</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Exam</th>
+            <th>Stream/Subject</th>
+            <th>Institution</th>
+            <th>Board/University</th>
+            <th>Year</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Exam">MCA</td>
+            <td data-label="Stream/Subject">Computer Applications</td>
+            <td data-label="Institution">Kashi Institute of Technology, Varanasi</td>
+            <td data-label="Board/University">AKTU University</td>
+            <td data-label="Year">2024 - 26</td>
+            <td data-label="Result">Pursuing</td>
+          </tr>
+          <tr>
+            <td data-label="Exam">BCA</td>
+            <td data-label="Stream/Subject">Computer Applications</td>
+            <td data-label="Institution">Arcade Business College, Patna</td>
+            <td data-label="Board/University">Patliputra University</td>
+            <td data-label="Year">2021 - 24</td>
+            <td data-label="Result">-</td>
+          </tr>
+          <tr>
+            <td data-label="Exam">12th</td>
+            <td data-label="Stream/Subject">Science</td>
+            <td data-label="Institution">D.A.V Public School, Buxar</td>
+            <td data-label="Board/University">CBSE</td>
+            <td data-label="Year">2020</td>
+            <td data-label="Result">-</td>
+          </tr>
+          <tr>
+            <td data-label="Exam">10th</td>
+            <td data-label="Stream/Subject">General</td>
+            <td data-label="Institution">D.A.V Public School, Buxar</td>
+            <td data-label="Board/University">CBSE</td>
+            <td data-label="Year">2017</td>
+            <td data-label="Result">-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Expanded Image" id="lightbox-img">
+  </div>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function openLightbox(src) {
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = src;
+    lightbox.style.display = 'flex';
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function() {
+    this.style.display = 'none';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abhishek Anand - Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+
+    /* ✅ Moving Background Effect */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      z-index: -1;
+      filter: brightness(0.5);
+      animation: bgMove 25s ease-in-out infinite alternate;
+    }
+
+    /* ✅ Smooth background movement keyframes */
+    @keyframes bgMove {
+      0% {
+        background-position: center center;
+        transform: scale(1);
+      }
+      50% {
+        background-position: center 10%;
+        transform: scale(1.05);
+      }
+      100% {
+        background-position: center center;
+        transform: scale(1);
+      }
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      flex: 1;
+    }
+
+    h1 {
+      background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      font-weight: bold;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: none;
+      animation: goldShine 3s linear infinite;
+    }
+
+    @keyframes goldShine {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .resume-title {
+      display: block;
+      margin: 20px auto;
+      padding: 15px 40px;
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 50px;
+      border: none;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b, #1fa2ff, #12d8fa, #a6ffcb, #00f260, #0575e6);
+      background-size: 400% 400%;
+      animation: gradientFlow 8s ease infinite;
+      color: white;
+      text-shadow: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @media (max-width: 600px) {
+      .resume-title {
+        font-size: 1.5rem;
+        padding: 10px 25px;
+      }
+    }
+
+    .section {
+      margin-top: 30px;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .section.show {
+      display: block;
+      opacity: 1;
+    }
+
+    .section-title {
+      display: inline-block;
+      background: linear-gradient(45deg, #00d4ff, #00ffa2, #ff8a00, #ff1b6b);
+      background-size: 300% 300%;
+      color: #000;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+      animation: gradientMove 5s ease infinite;
+      border: none;
+      text-align: center;
+      text-shadow: none;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    p, li {
+      line-height: 1.6;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      color: #fff;
+    }
+
+    th, td {
+      border: 1px solid #00d4ff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #00d4ff;
+      color: #000;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .highlight {
+      color: #00d4ff;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    a {
+      color: #00d4ff;
+      text-decoration: none;
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .nav-buttons button {
+      color: black;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      flex: 1 1 auto;
+      max-width: 200px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .nav-buttons button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    }
+
+    .nav-buttons button:nth-child(1) { background: linear-gradient(45deg, #ff416c, #ff4b2b); }
+    .nav-buttons button:nth-child(2) { background: linear-gradient(45deg, #1fa2ff, #12d8fa, #a6ffcb); }
+    .nav-buttons button:nth-child(3) { background: linear-gradient(45deg, #f7971e, #ffd200); }
+    .nav-buttons button:nth-child(4) { background: linear-gradient(45deg, #7f00ff, #e100ff); }
+    .nav-buttons button:nth-child(5) { background: linear-gradient(45deg, #00c9ff, #92fe9d); }
+    .nav-buttons button:nth-child(6) { background: linear-gradient(45deg, #f953c6, #b91d73); }
+    .nav-buttons button:nth-child(7) { background: linear-gradient(45deg, #fc466b, #3f5efb); }
+    .nav-buttons button:nth-child(8) { background: linear-gradient(45deg, #00f260, #0575e6); }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+      .nav-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-buttons button {
+        max-width: none;
+        font-size: 14px;
+        padding: 10px 18px;
+      }
+    }
+
+    footer {
+      background: linear-gradient(270deg, #ff416c, #ff4b2b, #1fa2ff, #12d8fa, #a6ffcb, #00f260, #0575e6);
+      background-size: 800% 800%;
+      animation: footerGradient 15s ease infinite;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 14px;
+      margin-top: 30px;
+      text-shadow: none;
+    }
+
+    @keyframes footerGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="resume-title">RESUME</button>
+
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1>ABHISHEK ANAND</h1>
+        <p><span class="highlight">Address:</span> Musafirgani Bazar Samiti Road, Near Nehru High School, Buxar, Bihar - 802103</p>
+        <p><span class="highlight">Email:</span> <a href="mailto:abhishekanand5056@gmail.com">abhishekanand5056@gmail.com</a></p>
+        <p><span class="highlight">LinkedIn:</span> <a href="https://www.linkedin.com/in/abhishek-anand-891a78322" target="_blank">linkedin.com/in/abhishek-anand</a></p>
+        <p><span class="highlight">Mobile:</span> 7563975655</p>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="showSection('career')">Career Objectives</button>
+      <button onclick="showSection('education')">Education</button>
+      <button onclick="showSection('experience')">Experience</button>
+      <button onclick="showSection('skills')">Technical Skills</button>
+      <button onclick="showSection('projects')">Projects</button>
+      <button onclick="showSection('languages')">Languages</button>
+      <button onclick="showSection('hobbies')">Hobbies</button>
+      <button onclick="showSection('personal')">Personal Details</button>
+    </div>
+
+    <div id="career" class="section">
+      <div class="section-title">Career Objectives</div>
+      <p>Aspiring to work as a Software Developer, leveraging my MCA degree and programming skills to develop high-quality software solutions. Motivated to grow professionally and make meaningful contributions in a reputed organization while constantly advancing my skills.</p>
+    </div>
+
+    <div id="education" class="section">
+      <div class="section-title">Educational Qualification</div>
+      <table>
+        <tr><th>Year</th><th>Exam Passed</th><th>Institution / University</th><th>Marks</th></tr>
+        <tr><td>2025</td><td>M.C.A (1st Sem)</td><td>Kashi Institute of Technology</td><td>7.4 SGPA</td></tr>
+        <tr><td>2024</td><td>B.C.A</td><td>Arcade Business College</td><td>60%</td></tr>
+        <tr><td>2020</td><td>Intermediate</td><td>CBSE</td><td>56%</td></tr>
+        <tr><td>2017</td><td>High School</td><td>CBSE</td><td>7.2 CGPA</td></tr>
+      </table>
+    </div>
+
+    <div id="experience" class="section">
+      <div class="section-title">Experience</div>
+      <p>Fresher</p>
+    </div>
+
+    <div id="skills" class="section">
+      <div class="section-title">Technical Skills</div>
+      <ul>
+        <li>C Programming Language</li>
+        <li>HTML, CSS, JavaScript</li>
+        <li>Java (Core)</li>
+        <li>DBMS</li>
+      </ul>
+    </div>
+
+    <div id="projects" class="section">
+      <div class="section-title">Projects</div>
+      <ul>
+        <li><strong>Markandeya Mahadev Website</strong> – Developed a site for temple facilities and currency exchange.</li>
+        <li><strong>College Management System</strong> – Website using Java and Oracle for managing college data.</li>
+      </ul>
+    </div>
+
+    <div id="languages" class="section">
+      <div class="section-title">Languages</div>
+      <ul>
+        <li>English</li>
+        <li>Hindi</li>
+      </ul>
+    </div>
+
+    <div id="hobbies" class="section">
+      <div class="section-title">Hobbies</div>
+      <ul>
+        <li>Singing in College cultural events</li>
+        <li>Listening Music</li>
+        <li>Travelling</li>
+        <li>Photography</li>
+      </ul>
+    </div>
+
+    <div id="personal" class="section">
+      <div class="section-title">Personal Details</div>
+      <p><strong>Date of Birth:</strong> 19/08/2002</p>
+      <p><strong>Father’s Name:</strong> Manoj Kumar Rai</p>
+      <p><strong>Mother’s Name:</strong> Rita Rai</p>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Abhishek Anand | Designed with ❤️ | All Rights Reserved
+  </footer>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.remove('show');
+        section.style.display = 'none';
+      });
+
+      const target = document.getElementById(id);
+      target.style.display = 'block';
+      setTimeout(() => target.classList.add('show'), 10);
+    }
+  </script>
+</body>
+</html>
