@@ -142,7 +142,7 @@
 
     <div class="video-row">
       <div class="video-block">
-        <button class="card-button metro">Metro Project</button>
+        <button id="metroBtn" class="card-button metro" aria-haspopup="dialog" aria-controls="ytOverlay">Metro Project</button>
       </div>
 
       <div class="video-block">
@@ -156,7 +156,7 @@
   </footer>
 
   <!-- Fullscreen YouTube Overlay -->
-  <div id="ytOverlay" class="overlay" role="dialog" aria-modal="true" aria-label="Patna Metro Video">
+  <div id="ytOverlay" class="overlay" role="dialog" aria-modal="true" aria-label="YouTube Video">
     <button id="closeOverlay" class="close-btn" aria-label="Close video (Esc)">✖</button>
     <div class="video-shell" id="videoShell">
       <div class="video-frame" id="videoFrame">
@@ -168,14 +168,18 @@
   </div>
 
   <script>
-    const YT_VIDEO_ID = "L3iPzAW_ZxE"; // Example video ID
+    const VIDEOS = {
+      metro: "y8HPsjQxFfg",   // Metro Project video
+      patna: "L3iPzAW_ZxE"    // Patna Metro Code video
+    };
 
-    const patnaBtn   = document.getElementById('patnaBtn');
-    const overlay    = document.getElementById('ytOverlay');
-    const closeBtn   = document.getElementById('closeOverlay');
-    const videoFrame = document.getElementById('videoFrame');
+    const metroBtn  = document.getElementById('metroBtn');
+    const patnaBtn  = document.getElementById('patnaBtn');
+    const overlay   = document.getElementById('ytOverlay');
+    const closeBtn  = document.getElementById('closeOverlay');
+    const videoFrame= document.getElementById('videoFrame');
 
-    function buildEmbedSrc() {
+    function buildEmbedSrc(videoId) {
       const params = new URLSearchParams({
         autoplay: '1',
         mute: '1',
@@ -184,37 +188,42 @@
         modestbranding: '1',
         controls: '1'
       });
-      return `https://www.youtube.com/embed/${YT_VIDEO_ID}?${params.toString()}`;
+      return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
     }
 
-    function openOverlay() {
+    function openOverlay(videoId, btn) {
       videoFrame.innerHTML = `<iframe
-          title="Patna Metro Video"
-          src="${buildEmbedSrc()}"
+          title="YouTube Video"
+          src="${buildEmbedSrc(videoId)}"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
         ></iframe>`;
       overlay.classList.add('active');
       closeBtn.focus();
+      overlay.dataset.lastBtn = btn.id;
     }
 
     function closeOverlay() {
       overlay.classList.remove('active');
       videoFrame.innerHTML = "";
-      patnaBtn.focus();
+      const lastBtn = document.getElementById(overlay.dataset.lastBtn);
+      if (lastBtn) lastBtn.focus();
     }
 
-    patnaBtn.addEventListener('click', openOverlay);
+    metroBtn.addEventListener('click', () => openOverlay(VIDEOS.metro, metroBtn));
+    patnaBtn.addEventListener('click', () => openOverlay(VIDEOS.patna, patnaBtn));
     closeBtn.addEventListener('click', closeOverlay);
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && overlay.classList.contains('active')) closeOverlay();
     });
+
     overlay.addEventListener('click', (e) => {
       const clickedInside = e.target.closest('#videoFrame') || e.target.id === 'closeOverlay';
       if (!clickedInside) closeOverlay();
     });
+
     overlay.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
   </script>
 </body>
 </html>
-
